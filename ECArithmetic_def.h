@@ -18,16 +18,23 @@ int a = 1, b = 1;
 // Prime defining the field we are working on. Default value 5.
 int prime = 5;
 
+// Constants
+
+// Point at infinity 
+const point PAI = {-1, -1};
+
 // Macros
-
-// Multiplication of two integers
-#define MULT(x, y) (x*y) % prime
-
-// Modular addition
-#define ADD(x, y) (x+y) % prime
-
 
 // Functions
 int in_curve(point);
+int equal(point, point);
+int inv(int);
+int multiply(int, int);
+int modulo(int, int);
+int order(point);
+point inverse(point);
+point add(point, point);
+point fast_multiplication(int, point);
+void print_points(point[], int);
 int main();
 

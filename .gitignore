@@ -1,2 +1,4 @@
 *.out
 *~
+/TareaExamen/*
+*.zip
