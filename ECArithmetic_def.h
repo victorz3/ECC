@@ -36,5 +36,6 @@ point inverse(point);
 point add(point, point);
 point fast_multiplication(int, point);
 void print_points(point[], int);
+int is_prime(int);
 int main();
 

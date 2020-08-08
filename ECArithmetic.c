@@ -5,6 +5,7 @@
 #include "ECArithmetic_def.h"
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 // Returns 1 if the point is in the EC, 0 otherwise.
 int in_curve(point point){
@@ -145,6 +146,21 @@ void print_points(point points[], int size){
   printf("\n");
 }
 
+// Tells us whether a number is prime.
+// This method is extremely inefficient.
+int is_prime(int p){
+  if(p < 2)
+    return 0;
+  // Potential divisor
+  int i;
+  // Square root of p.
+  double s = sqrt(p);
+  for(i = 2; i <= s; ++i)
+    if(p % i == 0)
+      return 0;
+  return 1;
+}
+
 int main(){
   printf("TAREA EXAMEN 2:\n");
   a = b = 1;
@@ -156,5 +172,7 @@ int main(){
   else
     strcpy(answer, "no");
   printf("El punto (%d, %d) es racional? %s\n", p.x, p.y, answer);
+  printf("Orden n = %d\n", order(p));
+  //printf("n es primo? %s\n");
 }
  
