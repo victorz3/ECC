@@ -11,11 +11,14 @@ int in_curve(point point){
 
   // Left side of the equality.
   int left = multiply(point.y, point.y);
-
+  
   // Right side of the equality.
   int right = multiply(multiply(point.x, point.x), point.x);
+
   right += multiply(a, point.x);
   right += b;
+  // Was missing modulo here. Important in case it goes over prime.
+  right = modulo(right, prime); 
 
   if(left == right)
     return 1;
@@ -143,18 +146,15 @@ void print_points(point points[], int size){
 }
 
 int main(){
-  prime = 10007;
+  printf("TAREA EXAMEN 2:\n");
   a = b = 1;
-  point p = {7, 5300};
-  int d = 12345;
-  char s[10];
+  prime = 30677;
+  point p = {1090, 18593};
+  char answer[10];
   if(in_curve(p))
-    strcpy(s, "yes");
+    strcpy(answer, "sí");
   else
-    strcpy(s, "no");
-  printf("Is the point in the curve?: %s\n", s);
-  printf("Order: %d\n", order(p));
-  point public = fast_addition(d, p);
-  printf("Public key of private key %d is: (%d, %d)\n", d, public.x, public.y);
+    strcpy(answer, "no");
+  printf("El punto (%d, %d) es racional? %s\n", p.x, p.y, answer);
 }
  
