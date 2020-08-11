@@ -28,14 +28,17 @@ const point PAI = {-1, -1};
 // Functions
 int in_curve(point);
 int equal(point, point);
-int inv(int);
+int inv(int, int);
 int multiply(int, int);
 int modulo(int, int);
 int order(point);
 point inverse(point);
 point add(point, point);
-point fast_multiplication(int, point);
+point fast_addition(int, point);
+point slow_addition(int, point);
 void print_points(point[], int);
 int is_prime(int);
+point sign(int, point, int, int, int(*hash)(char*), char*);
+int verify_sign(point, int, int(*hash)(char*), char*, point, point);
 int main();
 
